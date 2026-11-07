@@ -1,35 +1,47 @@
-feat: a charcoal base and lavender selection, instead of near-black
+feat: Lavender Light — a light twin of Lavender
 
-Through 2.5.1 Lavender was native Dark's palette with the accent swapped.
-Next to Todoist's dark mode, which wears the same lavender, it felt off,
-and the reasons were in the base rather than the accent:
+Lavender Light is Lavender v2.6.0 turned to daylight: the same stylesheet
+structure, Inter setup, Daily view and selection rules, GitHub Pages
+hosting and pre-publish checks, on a light palette. It gets its own
+identifier, com.beshoysabri.lavender-light-theme, so it installs alongside
+Lavender and Dark Blue, and pairs with Lavender under Preferences >
+Appearance > Use system color scheme.
 
-- Near-black (#0f1011) makes a pastel glow. Lavender is 8.0:1 against
-  it, where Dark Blue's mid-tone blue was 3.8:1; the native palette was
-  tuned for a mid-tone accent.
-- There were no in-between lavenders. The 6% accent backdrop is
-  invisible on dark, and Standard Notes paints the selected tag and the
-  selected note with near-black (#0f1011, and #000000 through the
-  contrast background), so selection read as a black bar.
-- Sidebar labels and note text were pure #ffffff on near-black, 19.1:1.
+The greys are Lavender's charcoal palette mirrored: each sits at the same
+contrast from the base as its dark twin, on the other side of it. Base
+#1e1e1e -> #ffffff, sidebar #252525 -> #f5f5f5, borders #2a2a2a ->
+#eeeeee, separators #333333 -> #e0e0e0, text #eeeeee -> #2a2a2a (14.4:1
+in both). Hover greys step lighter than the exact mirror (#ebebeb in the
+sidebar, #f2f2f2 in the note list): mirrored, they were as loud as the
+lavender selection. Secondary text #707070 clears 4.5:1 on the sidebar.
+Status colours are native Light's.
 
-2.6.0 lifts the neutrals to charcoal: #1e1e1e base, #252525 sidebar and
-surfaces, #2a2a2a borders, #333333 separators, near-opaque charcoal
-menus. Pure white softens to #eeeeee (14.4:1). The accent gets
-in-between shades: an 18% backdrop, a 35% text-selection wash under
-light text (7.1:1) in place of a solid block with dark text, and a 40%
-scrollbar thumb. Text on solid lavender follows the base, #1e1e1e at
-7.0:1.
+The accent can't be mirrored. #a79ef4 is 2.4:1 on white, so the solid
+accent keeps its 246° hue and deepens to #6d61d1 (4.9:1, level with
+native Light's blue at 5.0:1), with white text on it again. The darkened
+shade is #5446c9, 6.9 HSL lightness points lower as before. The washes
+come from the deeper accent: an 18% backdrop for selected rows, as in
+Lavender, a 25% text selection under #2a2a2a (10.3:1) and a 35%
+scrollbar thumb. Accessory tint 1 follows the accent.
 
-A new section 5 makes selection a lavender wash. Standard Notes uses one
-colour for hover and selection in both the sidebar and the note list, so
-hover stays a neutral grey and rules give the selected tag and the
-selected note the 18% backdrop, with the sidebar label in lavender. They
-only reference variables, so the digest still covers exactly 90
-declarations. The optional extras move to section 6.
+Two rules change. Accent text that sits on the wash — the selected
+sidebar label and a Daily view day with an entry — uses the darkened
+shade: 5.0-5.4:1, where the accent would manage 3.6-3.9:1. Both still
+only reference variables.
 
-Previewed against 2.5.1 in app.standardnotes.com before release. Docs
-and the landing page now describe the charcoal base instead of promising
-native Dark's colours.
+The sidebar label rule also sets -webkit-text-fill-color. Standard Notes
+paints tag titles with -webkit-text-fill-color:
+var(--navigation-item-text-color), which wins over color, so a rule that
+sets only color never reaches the screen. Lavender v2.6.0 does exactly
+that: its computed colour is lavender but the pixels are #eeeeee. Here
+the label is sampled at #5446c9 in the running app.
 
-Released as 2.6.0.
+CI: the colour digest is re-baselined to the Lavender Light palette —
+still 90 declarations, still everything except the three --sn-inter-*
+knobs.
+
+Previewed in app.standardnotes.com v3.203.0 next to Lavender before
+release: sidebar, note list, editor, text selection, menus, quick
+settings and preferences.
+
+Released as 2.7.0.

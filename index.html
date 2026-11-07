@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lavender — a Standard Notes theme</title>
-<meta name="description" content="A soft charcoal dark theme with a lavender accent, and the whole app set in Inter.">
-<meta name="color-scheme" content="dark">
+<title>Lavender Light — a Standard Notes theme</title>
+<meta name="description" content="A light theme with a lavender accent, the daytime twin of Lavender, and the whole app set in Inter.">
+<meta name="color-scheme" content="light">
 
 <style>
 /* The page is the product: same font files, same tokens the theme ships. */
@@ -25,16 +25,16 @@
 }
 
 :root {
-  --bg: #1e1e1e;
-  --surface: #252525;
-  --border: #2a2a2a;
-  --fg: #eeeeee;
-  --muted: #7c7c7c;
-  --accent: #a79ef4;
-  --accent-dark: #8a7ff0;
-  --on-accent: #1e1e1e; /* the theme's text-on-accent: lavender is too light for white */
-  --wash: rgba(167, 158, 244, .18); /* the theme's selection backdrop */
-  --rule: #333333;
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --border: #eeeeee;
+  --fg: #2a2a2a;
+  --muted: #707070;
+  --accent: #6d61d1;
+  --accent-dark: #5446c9;
+  --on-accent: #ffffff; /* the theme's text-on-accent: white, 4.9:1 on the deep lavender */
+  --wash: rgba(109, 97, 209, .18); /* the theme's selection backdrop */
+  --rule: #e0e0e0;
 
   --sans: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
@@ -86,7 +86,8 @@ h2 {
 }
 
 p { margin: 0 0 1rem; }
-a { color: var(--accent); text-decoration-color: var(--accent-dark); text-underline-offset: 2px; }
+a { color: var(--accent); text-decoration-color: var(--accent); text-underline-offset: 2px; }
+a:hover { color: var(--accent-dark); }
 
 /* --- install --- */
 .install {
@@ -125,7 +126,7 @@ button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
 ol { padding-left: 1.2rem; color: var(--muted); }
 ol strong { color: var(--fg); font-weight: 560; }
 
-/* --- specimen: a mock Super note, which is also the font smoke test --- */
+/* --- specimen: a mock note, which is also the font smoke test --- */
 .note {
   background: var(--bg);
   border: 1px solid var(--rule);
@@ -151,7 +152,7 @@ ol strong { color: var(--fg); font-weight: 560; }
   margin: 0 0 .55rem;
 }
 .note-body p { font-size: .96rem; }
-.note-body ::selection { background: rgba(167, 158, 244, .35); color: var(--fg); } /* the theme's 35% text-selection wash */
+.note-body ::selection { background: rgba(109, 97, 209, .25); color: var(--fg); } /* the theme's 25% text-selection wash */
 .note-body pre {
   font-family: var(--mono);
   font-size: .8rem;
@@ -196,29 +197,32 @@ footer {
 <body>
 <main>
 
-  <h1>Lavender</h1>
-  <p class="tagline">A soft charcoal dark theme with a lavender accent — and the whole app set in Inter.</p>
-  <p class="version" id="version">v2.6.0</p>
+  <h1>Lavender Light</h1>
+  <p class="tagline">A light theme with a lavender accent, the daytime twin of Lavender — and the whole app set in Inter.</p>
+  <p class="version" id="version">v2.7.0</p>
 
   <h2>Install</h2>
   <div class="install">
-    <code id="url">https://beshoysabri.github.io/sn-lavender-theme/ext.json</code>
+    <code id="url">https://beshoysabri.github.io/sn-lavender-light-theme/ext.json</code>
     <button id="copy" type="button">Copy</button>
   </div>
   <ol>
     <li>Open the Standard Notes desktop app → <strong>Preferences</strong> → <strong>Plugins</strong></li>
     <li>Paste the link under <strong>Install Custom Plugin</strong>, at the bottom</li>
-    <li>Pick <strong>Lavender</strong> from the Appearance menu</li>
+    <li>Pick <strong>Lavender Light</strong> from the Appearance menu</li>
   </ol>
   <p>Use the desktop app for the install: the web app refuses plugin links from any self-hosted theme. Installed themes sync with your account, so it reaches the web app from there.</p>
+
+  <h2>Pair it with Lavender</h2>
+  <p>Install <a href="https://beshoysabri.github.io/sn-lavender-theme">Lavender</a> too, then turn on <strong>Preferences → Appearance → Use system color scheme</strong> and pick <strong>Lavender Light</strong> as the Automatic Light Theme and <strong>Lavender</strong> as the Automatic Dark Theme. Standard Notes then follows your OS between the two. That choice is stored per device, so set it once on each.</p>
 
   <h2>The whole app, in Inter</h2>
   <div class="note">
     <div class="note-bar"><span class="dot"></span> Super</div>
     <div class="note-body">
-      <h3>What actually changed</h3>
-      <p>The base is a soft charcoal instead of near-black, selected rows wear a lavender wash instead of a black bar, the accent moves from purple to lavender, and the app is set in Inter — <em>italics included</em>, since the variable font ships in both styles.</p>
-      <blockquote>Since v2.3.0 this covers the sidebar, note list and menus too, not just Super notes. v2.2.0 scoped it to the editor alone.</blockquote>
+      <h3>Lavender, in daylight</h3>
+      <p>A pastel can't carry text on white — Lavender's <code>#a79ef4</code> is 2.4:1 there — so the accent keeps its hue and deepens to <code>#6d61d1</code>. The softness moves into the washes: selected notes and tags, <em>selected text</em>, the scrollbar.</p>
+      <blockquote>Every grey is Lavender's, mirrored: the same contrast from the base, on the other side of it.</blockquote>
       <p>Code keeps its monospace face. That rule is listed after the app-wide one, so it wins at equal specificity:</p>
       <pre>pre, code, kbd, samp, pre *, code *,
 [class*='code-' i], [data-lexical-code]</pre>
@@ -228,24 +232,25 @@ footer {
 
   <h2>Palette</h2>
   <ul class="swatches">
-    <li><span class="chip" style="background:#a79ef4"></span><b>Accent</b>#a79ef4</li>
-    <li><span class="chip" style="background:var(--wash)"></span><b>Selection</b>#a79ef4 · 18%</li>
-    <li><span class="chip" style="background:#1e1e1e"></span><b>Background</b>#1e1e1e</li>
-    <li><span class="chip" style="background:#252525"></span><b>Sidebar</b>#252525</li>
-    <li><span class="chip" style="background:#2a2a2a"></span><b>Border</b>#2a2a2a</li>
-    <li><span class="chip" style="background:#eeeeee"></span><b>Foreground</b>#eeeeee</li>
+    <li><span class="chip" style="background:#6d61d1"></span><b>Accent</b>#6d61d1</li>
+    <li><span class="chip" style="background:#5446c9"></span><b>Accent, darkened</b>#5446c9</li>
+    <li><span class="chip" style="background:var(--wash)"></span><b>Selection</b>#6d61d1 · 18%</li>
+    <li><span class="chip" style="background:#ffffff"></span><b>Background</b>#ffffff</li>
+    <li><span class="chip" style="background:#f5f5f5"></span><b>Sidebar</b>#f5f5f5</li>
+    <li><span class="chip" style="background:#eeeeee"></span><b>Border</b>#eeeeee</li>
+    <li><span class="chip" style="background:#2a2a2a"></span><b>Foreground</b>#2a2a2a</li>
   </ul>
 
   <h2>Notes</h2>
-  <p><strong>Desktop and mobile need Inter installed on the device.</strong> The desktop app sets <code>default-src 'self' blob:</code> with no <code>font-src</code>, so it refuses to download any webfont — a <code>data:</code> URI included. A font already installed needs no download, so it just works: get <a href="https://rsms.me/inter/">Inter</a>, install it, restart the app. Confirmed on macOS, iOS and Android. Without it you still get the colours, with the system font.</p>
-  <p><strong>Why charcoal.</strong> Lavender is a pastel, and a pastel glows on near-black. Up to v2.5.1 this theme kept native Dark's <code>#0f1011</code>; since v2.6.0 it sits on <code>#1e1e1e</code>, with a <code>#252525</code> sidebar and soft-white <code>#eeeeee</code> text instead of pure white.</p>
-  <p>Selection is a lavender wash, not a black bar. Standard Notes paints the selected tag and the selected note with the colour it also uses for hover — near-black under native Dark. Here hover stays grey and the selected row gets an 18% lavender tint, with the sidebar label in lavender.</p>
-  <p>Lavender is light, so text that sits <em>on</em> it — primary buttons, the new-note button, the Daily view's date tiles — is set in the background colour <code>#1e1e1e</code> (7.0:1) rather than the near-white native Dark uses, which manages only 2.0:1 on lavender. Like the Copy button above.</p>
-  <p>The Daily notebook uses the app's <em>danger</em> token for today's date and the create-note button, which reads red on a lavender theme. Since v2.4.0 those specific elements are repainted with the accent — destructive controls stay red.</p>
+  <p><strong>Desktop and mobile need Inter installed on the device.</strong> The desktop app sets <code>default-src 'self' blob:</code> with no <code>font-src</code>, so it refuses to download any webfont — a <code>data:</code> URI included. A font already installed needs no download, so it just works: get <a href="https://rsms.me/inter/">Inter</a>, install it, restart the app. Without it you still get the colours, with the system font.</p>
+  <p><strong>A mirror of Lavender.</strong> Each grey sits at the same contrast from the base as its twin in the dark theme: the <code>#252525</code> sidebar becomes <code>#f5f5f5</code>, <code>#2a2a2a</code> borders become <code>#eeeeee</code>, and the <code>#eeeeee</code> text becomes <code>#2a2a2a</code> — 14.4:1 on its base in both. Hover greys are a step lighter than an exact mirror, so the selection stays the loudest thing in a list.</p>
+  <p><strong>Selection is a lavender wash, not a grey bar.</strong> Standard Notes paints the selected tag and the selected note with the colour it also uses for hover. Here hover stays grey and the selected row gets an 18% lavender tint, as in Lavender — with the sidebar label in the darkened <code>#5446c9</code>, which reads at 5.0:1 on that tint where the accent itself would manage 3.6:1.</p>
+  <p>The accent is deep enough that text on it is white again (4.9:1), as in native Light — primary buttons, the new-note button, the Daily view's date tiles. Like the Copy button above.</p>
+  <p>The Daily notebook uses the app's <em>danger</em> token for today's date and the create-note button, which reads red on a lavender theme. Those specific elements are repainted with the accent — destructive controls stay red.</p>
   <p>Inter carries no Arabic or CJK glyphs — those scripts fall through to the next family in the stack rather than rendering as boxes.</p>
 
   <footer>
-    <a href="https://github.com/beshoysabri/sn-lavender-theme">Source on GitHub</a> · Fork of <a href="https://beshoysabri.github.io/sn-dark-blue-theme">Dark Blue</a> · Theme MIT · <a href="https://rsms.me/inter/">Inter</a> by Rasmus Andersson, SIL OFL 1.1
+    <a href="https://github.com/beshoysabri/sn-lavender-light-theme">Source on GitHub</a> · Daytime twin of <a href="https://beshoysabri.github.io/sn-lavender-theme">Lavender</a> · Theme MIT · <a href="https://rsms.me/inter/">Inter</a> by Rasmus Andersson, SIL OFL 1.1
   </footer>
 
 </main>

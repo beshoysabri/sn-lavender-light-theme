@@ -1,13 +1,15 @@
 /*
- * Standard Notes Theme: Lavender
- * A soft charcoal dark theme with a lavender accent, plus Inter
- * across the whole app. A fork of Dark Blue
+ * Standard Notes Theme: Lavender Light
+ * A light theme with a lavender accent, plus Inter across the
+ * whole app. The light counterpart of Lavender
+ *   https://github.com/beshoysabri/sn-lavender-theme
+ * which is itself a fork of Dark Blue
  *   https://github.com/beshoysabri/sn-dark-blue-theme
  *
  * Author : Beshoy Sabri
  * License: MIT. Inter is OFL 1.1 — see
- *   https://beshoysabri.github.io/sn-lavender-theme/LICENSE-3RD-PARTY
- * Version: 2.6.0
+ *   https://beshoysabri.github.io/sn-lavender-light-theme/LICENSE-3RD-PARTY
+ * Version: 2.7.0
  *
  * FONTS — READ THIS. The desktop client sets
  *   Content-Security-Policy: default-src 'self' blob:
@@ -27,7 +29,7 @@
  *
  * Structure:
  *   1. Typography — Inter webfont + knobs
- *   2. Colours    — charcoal base, lavender accent (changed in 2.6.0)
+ *   2. Colours    — white base, deep lavender accent (new in 2.7.0)
  *   3. Apply Inter app-wide                        (changed in 2.3.0)
  *   4. Daily view — lavender instead of danger red (new in 2.4.0)
  *   5. Selection — lavender wash, sidebar and list (new in 2.6.0)
@@ -55,7 +57,7 @@
   src:
     local('InterVariable'),
     local('Inter Variable'),
-    url('https://beshoysabri.github.io/sn-lavender-theme/dist/fonts/InterVariable.woff2')
+    url('https://beshoysabri.github.io/sn-lavender-light-theme/dist/fonts/InterVariable.woff2')
       format('woff2');
 }
 
@@ -67,7 +69,7 @@
   src:
     local('InterVariableItalic'),
     local('Inter Variable Italic'),
-    url('https://beshoysabri.github.io/sn-lavender-theme/dist/fonts/InterVariable-Italic.woff2')
+    url('https://beshoysabri.github.io/sn-lavender-light-theme/dist/fonts/InterVariable-Italic.woff2')
       format('woff2');
 }
 
@@ -94,93 +96,106 @@
 }
 
 /* ==============================================================
- * 2. COLOURS — lavender on a charcoal base (changed in 2.6.0)
- *    Through 2.5.1 this was native Dark's near-black (#0f1011)
- *    with the accent swapped. A pastel accent glows on near-black,
- *    so 2.6.0 lifts the neutrals to charcoal (#1e1e1e base,
- *    #252525 sidebar and surfaces), softens pure-white text to
- *    #eeeeee, and gives the accent in-between shades: an 18%
- *    backdrop for hovered and selected rows, a 35% wash for text
- *    selection, and a 40% scrollbar thumb.
+ * 2. COLOURS — lavender on a white base (new in 2.7.0)
+ *    Lavender's charcoal palette, mirrored. Each grey sits at the
+ *    same contrast from the base as its dark twin, on the other
+ *    side of it: the #252525 sidebar becomes #f5f5f5, #2a2a2a
+ *    borders become #eeeeee, #333333 separators become #e0e0e0,
+ *    and the #eeeeee text becomes #2a2a2a — 14.4:1 on its base in
+ *    both themes. Status colours are native Light's.
+ *
+ *    Two kinds of value step off the mirror. Hover greys are
+ *    lighter than their exact twins (#ebebeb and #f2f2f2, not
+ *    #e8e8e8 and #ebebeb): a pastel wash carries less contrast
+ *    than the grey it would be mirrored from, so mirrored hovers
+ *    were as loud as the selection. And the accent can't be
+ *    mirrored at all. Pastel #a79ef4 is 2.4:1 on white, too faint
+ *    for links, icons or a button, so the solid accent keeps its
+ *    246° hue at a deeper, calmer #6d61d1 (4.9:1, level with native
+ *    Light's blue at 5.0:1). The pastel lives on in the washes: an
+ *    18% backdrop for selected rows, as in Lavender, a 25% wash for
+ *    text selection and a 35% scrollbar thumb.
  * ============================================================== */
 
 :root {
-  /* Accent — lavender instead of purple (#a464c2 → #a79ef4).
-     The darkened shade keeps the hue and drops HSL lightness by
-     the same 6.9 points Dark Blue's #086DD6 → #065cb5 did.
-     Text on the accent is the base colour, not #eeeeee: lavender
-     is light enough that #eeeeee on it is 2.05:1, while #1e1e1e
-     is 7.02:1. The backdrop is 18% (was 6%, invisible on dark). */
-  --sn-stylekit-info-color: #a79ef4;
-  --sn-stylekit-info-color-darkened: #8a7ff0;
-  --sn-stylekit-info-contrast-color: #1e1e1e;
-  --sn-stylekit-info-backdrop-color: #a79ef42e;
+  /* Accent — deep lavender, the hue of Lavender's #a79ef4 at a
+     lightness that holds up on white. The darkened shade drops HSL
+     lightness by the same 6.9 points as Dark Blue's #086DD6 →
+     #065cb5, and doubles as the colour for accent text on the
+     wash (sections 4 and 5): there #6d61d1 manages only 3.6–3.9:1,
+     the darkened shade 5.0–5.4:1. Text on the accent is white
+     again, 4.9:1, as in native Light. */
+  --sn-stylekit-info-color: #6d61d1;
+  --sn-stylekit-info-color-darkened: #5446c9;
+  --sn-stylekit-info-contrast-color: #ffffff;
+  --sn-stylekit-info-backdrop-color: #6d61d12e;
 
-  /* Neutral */
-  --sn-stylekit-neutral-color: #7c7c7c;
+  /* Neutral — #707070 rather than the exact mirror of Lavender's
+     #7c7c7c (#7f7f7f, 4.0:1), so tag counts clear 4.5:1 on the
+     grey sidebar, and secondary text 5.0:1 on white. */
+  --sn-stylekit-neutral-color: #707070;
   --sn-stylekit-neutral-contrast-color: #ffffff;
 
-  /* Semantic status */
-  --sn-stylekit-success-color: #2b9612;
+  /* Semantic status — native Light */
+  --sn-stylekit-success-color: #007662;
   --sn-stylekit-success-contrast-color: #ffffff;
-  --sn-stylekit-warning-color: #cc8800;
+  --sn-stylekit-warning-color: #ebad00;
   --sn-stylekit-warning-contrast-color: #ffffff;
-  --sn-stylekit-danger-color: #f80324;
+  --sn-stylekit-danger-color: #cc2128;
   --sn-stylekit-danger-contrast-color: #ffffff;
   --sn-stylekit-danger-light-color: #f9e4e5;
 
   /* Shadow */
-  --sn-stylekit-shadow-color: #000000;
+  --sn-stylekit-shadow-color: #c8c8c8;
 
   /* Background & foreground */
-  --sn-stylekit-background-color: #1e1e1e;
-  --sn-stylekit-foreground-color: #eeeeee;
-  --sn-stylekit-border-color: #2a2a2a;
+  --sn-stylekit-background-color: #ffffff;
+  --sn-stylekit-foreground-color: #2a2a2a;
+  --sn-stylekit-border-color: #eeeeee;
 
-  --sn-stylekit-contrast-background-color: #161616;
-  --sn-stylekit-contrast-foreground-color: #eeeeee;
-  --sn-stylekit-contrast-border-color: #161616;
+  --sn-stylekit-contrast-background-color: #f5f5f5;
+  --sn-stylekit-contrast-foreground-color: #2a2a2a;
+  --sn-stylekit-contrast-border-color: #e0e0e0;
 
-  --sn-stylekit-secondary-background-color: #252525;
-  --sn-stylekit-secondary-foreground-color: #eeeeee;
-  --sn-stylekit-secondary-border-color: #161616;
+  --sn-stylekit-secondary-background-color: #f5f5f5;
+  --sn-stylekit-secondary-foreground-color: #2a2a2a;
+  --sn-stylekit-secondary-border-color: #e0e0e0;
 
-  --sn-stylekit-secondary-contrast-background-color: #161616;
-  --sn-stylekit-secondary-contrast-foreground-color: #eeeeee;
-  --sn-stylekit-secondary-contrast-border-color: #ffffff;
+  --sn-stylekit-secondary-contrast-background-color: #e0e0e0;
+  --sn-stylekit-secondary-contrast-foreground-color: #2a2a2a;
+  --sn-stylekit-secondary-contrast-border-color: #a2a2a2;
 
   /* Editor */
-  --sn-stylekit-editor-background-color: #1e1e1e;
-  --sn-stylekit-editor-foreground-color: #eeeeee;
-  --sn-stylekit-paragraph-text-color: #eeeeee;
+  --sn-stylekit-editor-background-color: #ffffff;
+  --sn-stylekit-editor-foreground-color: #2a2a2a;
+  --sn-stylekit-paragraph-text-color: #2a2a2a;
 
   /* Input */
   --sn-stylekit-input-placeholder-color: #a8a8a8;
   --sn-stylekit-input-border-color: #e3e3e3;
 
   /* Scrollbar */
-  --sn-stylekit-scrollbar-thumb-color: #a79ef466;
-  --sn-stylekit-scrollbar-track-border-color: #1e1e1e;
+  --sn-stylekit-scrollbar-thumb-color: #6d61d159;
+  --sn-stylekit-scrollbar-track-border-color: #ffffff;
 
   /* Passive colors */
-  --sn-stylekit-passive-color-0: #999999;
+  --sn-stylekit-passive-color-0: #656565;
   --sn-stylekit-passive-color-1: #72767e;
   --sn-stylekit-passive-color-2: #bbbec4;
-  --sn-stylekit-passive-color-3: #333333;
-  --sn-stylekit-passive-color-4: #252525;
+  --sn-stylekit-passive-color-3: #e0e0e0;
+  --sn-stylekit-passive-color-4: #f5f5f5;
   --sn-stylekit-passive-color-4-opacity-variant: #bbbec43d;
-  --sn-stylekit-passive-color-5: #2c2c2c;
+  --sn-stylekit-passive-color-5: #f2f2f2; /* note-list hover, section 5 */
   --sn-stylekit-passive-color-6: #e5e5e5;
   --sn-stylekit-passive-color-super-light: #f9f9f9;
 
-  /* Accessory tint (native Dark defaults, except tint 1).
+  /* Accessory tint (native defaults, except tint 1).
      Standard Notes colours the Super, plain-text and rich-text
      note icons with tint 1, and pairs it with info-faded fills
      (the note's editing-status pill), so it is designed to match
-     the accent — natively both are #086dd6, which is why Dark
-     Blue never had to touch it. Left blue, it was the one blue
-     still visible in Lavender. (Changed in 2.5.1.) */
-  --sn-stylekit-accessory-tint-color-1: #a79ef4;
+     the accent — natively both are #086dd6. Set to the accent so
+     no blue is left over, as in Lavender. */
+  --sn-stylekit-accessory-tint-color-1: #6d61d1;
   --sn-stylekit-accessory-tint-color-2: #ea6595;
   --sn-stylekit-accessory-tint-color-3: #ebad00;
   --sn-stylekit-accessory-tint-color-4: #7049cf;
@@ -188,70 +203,70 @@
   --sn-stylekit-accessory-tint-color-6: #f28c52;
 
   /* Component integration */
-  --sn-component-foreground-color: #eeeeee;
+  --sn-component-foreground-color: #2a2a2a;
   --sn-component-background-color: transparent;
-  --sn-component-foreground-highlight-color: #a79ef4;
+  --sn-component-foreground-highlight-color: #6d61d1;
   --sn-component-outer-border-color: transparent;
-  --sn-component-inner-border-color: #eeeeee;
+  --sn-component-inner-border-color: #2a2a2a;
 
   /* Desktop titlebar */
-  --sn-desktop-titlebar-bg-color: #1e1e1e;
-  --sn-desktop-titlebar-border-color: #1e1e1e;
-  --sn-desktop-titlebar-ui-color: #eeeeee;
-  --sn-desktop-titlebar-ui-hover-color: #a79ef4;
+  --sn-desktop-titlebar-bg-color: #ffffff;
+  --sn-desktop-titlebar-border-color: #ffffff;
+  --sn-desktop-titlebar-ui-color: #2a2a2a;
+  --sn-desktop-titlebar-ui-hover-color: #6d61d1;
 
   /* Grey */
-  --sn-stylekit-grey-5: #7c7c7c;
-  --sn-stylekit-grey-4-opacity-variant: #000000;
+  --sn-stylekit-grey-5: #707070;
+  --sn-stylekit-grey-4-opacity-variant: #ffffff;
 
   /* Menu */
-  --sn-stylekit-menu-border: 1px solid #424242;
+  --sn-stylekit-menu-border: 1px solid #c9c9c9;
 
   /* Navigation. selected-background is also Standard Notes' HOVER
      colour, so it is a neutral grey here; section 5 tints the
      selected row with the accent instead. */
-  --navigation-column-background-color: #252525;
-  --navigation-section-title-color: #eeeeee;
-  --navigation-item-text-color: #eeeeee;
-  --navigation-item-count-color: #7c7c7c;
-  --navigation-item-selected-background-color: #2e2e2e;
+  --navigation-column-background-color: #f5f5f5;
+  --navigation-section-title-color: #2a2a2a;
+  --navigation-item-text-color: #2a2a2a;
+  --navigation-item-count-color: #707070;
+  --navigation-item-selected-background-color: #ebebeb;
 
   /* Items column */
-  --items-column-background-color: #1e1e1e;
-  --items-column-items-background-color: #1e1e1e;
-  --items-column-border-left-color: #2a2a2a;
-  --items-column-border-right-color: #2a2a2a;
-  --items-column-search-background-color: #161616;
+  --items-column-background-color: #ffffff;
+  --items-column-items-background-color: #ffffff;
+  --items-column-border-left-color: #eeeeee;
+  --items-column-border-right-color: #eeeeee;
+  --items-column-search-background-color: #f5f5f5;
 
   /* Editor chrome */
-  --modal-background-color: #1e1e1e;
-  --editor-header-bar-background-color: #1e1e1e;
-  --editor-background-color: #1e1e1e;
-  --editor-foreground-color: #eeeeee;
-  --editor-title-bar-border-bottom-color: #2a2a2a;
-  --editor-title-input-color: #eeeeee;
-  --editor-pane-background-color: #1e1e1e;
-  --editor-pane-editor-background-color: #1e1e1e;
-  --editor-pane-editor-foreground-color: #eeeeee;
-  --editor-pane-component-stack-item-background-color: #1e1e1e;
+  --modal-background-color: #ffffff;
+  --editor-header-bar-background-color: #ffffff;
+  --editor-background-color: #ffffff;
+  --editor-foreground-color: #2a2a2a;
+  --editor-title-bar-border-bottom-color: #eeeeee;
+  --editor-title-input-color: #2a2a2a;
+  --editor-pane-background-color: #ffffff;
+  --editor-pane-editor-background-color: #ffffff;
+  --editor-pane-editor-foreground-color: #2a2a2a;
+  --editor-pane-component-stack-item-background-color: #ffffff;
 
-  /* Text selection — a 35% lavender wash under light text
-     (#eeeeee on it is 7.1:1), instead of a solid lavender block
-     that needed dark text. */
-  --text-selection-color: #eeeeee;
-  --text-selection-background-color: #a79ef459;
+  /* Text selection — a 25% lavender wash under the body text
+     (#2a2a2a on it is 10.3:1), rather than native Light's solid
+     accent block with white text. */
+  --text-selection-color: #2a2a2a;
+  --text-selection-background-color: #6d61d140;
 
   /* Note preview */
-  --note-preview-progress-color: #a79ef4;
+  --note-preview-progress-color: #6d61d1;
   --note-preview-progress-background-color: #bbbec43d;
-  --note-preview-selected-progress-color: #252525;
+  --note-preview-selected-progress-color: #f5f5f5;
   --note-preview-selected-progress-background-color: #bbbec43d;
 
   /* Buttons & popovers */
-  --normal-button-background-color: #2c2c2c;
-  --popover-background-color: rgba(42, 42, 42, 0.97);
-  --popover-border-color: #333333;
-  --separator-color: #333333;
+  --normal-button-background-color: #ffffff;
+  --popover-background-color: #ffffff;
+  --popover-border-color: #e0e0e0;
+  --separator-color: #e0e0e0;
 }
 
 /* ==============================================================
@@ -296,7 +311,7 @@ code *,
  * 4. DAILY VIEW — lavender instead of danger red
  * The Daily notebook borrows Standard Notes' `danger` token for
  * today's date, days that have an entry, the entry tiles and the
- * create-note buttons, so they come out #f80324 against an
+ * create-note buttons, so they come out #cc2128 against an
  * otherwise lavender theme.
  *
  * These rules repaint only those elements, and only by REFERENCING
@@ -325,13 +340,13 @@ button.z-editor-title-bar.bg-danger {
 }
 
 /* Calendar: A DAY THAT HAS AN ENTRY. Subordinate to today, but it
-   still has to read as a marker — the backdrop token alone is 6%
-   alpha and all but vanishes on this background, which would lose
-   the affordance entirely. The ring is a box-shadow, not a border:
-   the element ships no border-width, so border-color is inert. */
+   still has to read as a marker, so the wash gets a ring. The ring
+   is a box-shadow, not a border: the element ships no border-width,
+   so border-color is inert. The date itself is in the darkened
+   shade — #6d61d1 on the wash is 3.9:1, the darkened shade 5.4:1. */
 .bg-danger-light.text-danger.font-bold.h-full.w-full {
   background-color: var(--sn-stylekit-info-backdrop-color) !important;
-  color: var(--sn-stylekit-info-color) !important;
+  color: var(--sn-stylekit-info-color-darkened) !important;
   box-shadow: inset 0 0 0 1.5px var(--sn-stylekit-info-color);
 }
 
@@ -347,14 +362,14 @@ button.z-editor-title-bar.bg-danger {
 }
 
 /* ==============================================================
- * 5. SELECTION — a lavender wash, not a black bar (new in 2.6.0)
+ * 5. SELECTION — a lavender wash, not a grey bar
  * Standard Notes uses ONE colour for both hover and selection, in
  * both places it matters:
  *   sidebar   — --navigation-item-selected-background-color
- *               (native Dark: #0f1011, a black bar)
+ *               (native Light: #fdfdfd, a white bar)
  *   note list — --item-cell-selected-background-color, which the
  *               app defines as the contrast background
- *               (native Dark: #000000, a black bar)
+ *               (native Light: #f4f5f7, a grey bar)
  * One value can't be both a neutral hover and a lavender
  * selection, so hover stays grey and these rules give the selected
  * row the accent backdrop — and, in the sidebar, an accent label.
@@ -366,11 +381,19 @@ button.z-editor-title-bar.bg-danger {
   background-color: var(--sn-stylekit-info-backdrop-color) !important;
 }
 
+/* The darkened shade, not the accent: on the wash over the grey
+   sidebar #6d61d1 is 3.6:1 and #5446c9 is 5.0:1. (Lavender can use
+   the accent itself, which is light enough to read on dark.)
+   Standard Notes paints tag titles with -webkit-text-fill-color,
+   which wins over color, so setting color alone changes nothing on
+   screen. Lavender v2.6.0 does just that and its label stays
+   #eeeeee; set both. */
 #navigation .tag.selected > .tag-info > .title {
-  color: var(--sn-stylekit-info-color) !important;
+  color: var(--sn-stylekit-info-color-darkened) !important;
+  -webkit-text-fill-color: var(--sn-stylekit-info-color-darkened) !important;
 }
 
-/* Note list: a lighter grey on hover rather than a dark slab... */
+/* Note list: a grey on hover rather than the contrast slab... */
 #items-column .content-list-item:hover,
 #items-column .content-list-item:active {
   background-color: var(--sn-stylekit-passive-color-5) !important;

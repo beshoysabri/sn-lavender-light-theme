@@ -1,19 +1,19 @@
 {
-  "identifier": "com.beshoysabri.lavender-theme",
-  "name": "Lavender",
+  "identifier": "com.beshoysabri.lavender-light-theme",
+  "name": "Lavender Light",
   "content_type": "SN|Theme",
   "area": "themes",
-  "version": "2.6.0",
-  "description": "Soft charcoal dark theme with a lavender accent, set in Inter. Install Inter on the device for Desktop and Mobile — see the README.",
-  "url": "https://beshoysabri.github.io/sn-lavender-theme/dist/dist.css",
-  "latest_url": "https://beshoysabri.github.io/sn-lavender-theme/ext.json",
-  "download_url": "https://github.com/beshoysabri/sn-lavender-theme/archive/master.zip",
+  "version": "2.7.0",
+  "description": "Light theme with a lavender accent, set in Inter — the daytime twin of Lavender. Install Inter on the device for Desktop and Mobile — see the README.",
+  "url": "https://beshoysabri.github.io/sn-lavender-light-theme/dist/dist.css",
+  "latest_url": "https://beshoysabri.github.io/sn-lavender-light-theme/ext.json",
+  "download_url": "https://github.com/beshoysabri/sn-lavender-light-theme/archive/master.zip",
   "dock_icon": {
     "type": "circle",
-    "background_color": "#a79ef4",
-    "foreground_color": "#a79ef4",
-    "border_color": "#a79ef4"
+    "background_color": "#6d61d1",
+    "foreground_color": "#6d61d1",
+    "border_color": "#6d61d1"
   },
   "statusBar": "dark-content",
-  "marketing_url": "https://beshoysabri.github.io/sn-lavender-theme"
+  "marketing_url": "https://beshoysabri.github.io/sn-lavender-light-theme"
 }

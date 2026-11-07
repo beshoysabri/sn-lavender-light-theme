@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Publish sn-lavender-theme to GitHub Pages.
+# Publish sn-lavender-light-theme to GitHub Pages.
 #
 # Run from inside your local clone, after copying the new files over.
 # One-time setup first: Settings > Pages > Source > "GitHub Actions".
@@ -11,9 +11,9 @@
 #
 set -euo pipefail
 
-REPO_SLUG="beshoysabri/sn-lavender-theme"
+REPO_SLUG="beshoysabri/sn-lavender-light-theme"
 BRANCH="master"       # this repo's default branch is master, not main
-PAGES="https://beshoysabri.github.io/sn-lavender-theme"
+PAGES="https://beshoysabri.github.io/sn-lavender-light-theme"
 MSG_FILE="${MSG_FILE:-RELEASE_NOTES.md}"
 
 # Derived from the manifest — one less place to forget to bump.
@@ -35,7 +35,7 @@ test -f dist/fonts/InterVariable-Italic.woff2
 PAGES_FONTS="${PAGES}/dist/fonts"
 grep -q "url('${PAGES_FONTS}/InterVariable.woff2')" dist/dist.css
 grep -q "url('${PAGES_FONTS}/InterVariable-Italic.woff2')" dist/dist.css
-grep -q -- "--sn-stylekit-info-color: #a79ef4;" dist/dist.css
+grep -q -- "--sn-stylekit-info-color: #6d61d1;" dist/dist.css
 test -f .nojekyll
 echo "    v$EXT, fonts present, absolute srcs, accent intact"
 
@@ -117,9 +117,11 @@ cat <<EOF
 
 Done. ${PAGES}
 
-In Standard Notes, install Lavender from:
+In Standard Notes, install Lavender Light from:
   ${PAGES}/ext.json
 
-It has its own identifier, so it sits alongside Dark Blue rather than
-replacing it — pick either from the Appearance menu.
+It has its own identifier, so it sits alongside Lavender and Dark Blue
+rather than replacing them — pick any of them from the Appearance menu.
+Pair it with Lavender under Preferences > Appearance > "Use system color
+scheme" to switch with the OS.
 EOF
