@@ -1,6 +1,6 @@
 {
   "name": "sn-lavender-light-theme",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "main": "dist/dist.css",
   "sn": {
     "main": "dist/dist.css"

@@ -1,47 +1,32 @@
-feat: Lavender Light — a light twin of Lavender
+fix: honour the Monospace option and make the opt-ins work
 
-Lavender Light is Lavender v2.6.0 turned to daylight: the same stylesheet
-structure, Inter setup, Daily view and selection rules, GitHub Pages
-hosting and pre-publish checks, on a light palette. It gets its own
-identifier, com.beshoysabri.lavender-light-theme, so it installs alongside
-Lavender and Dark Blue, and pairs with Lavender under Preferences >
-Appearance > Use system color scheme.
+Three fixes and no colour change: the 90 colour declarations still hash
+to the same digest.
 
-The greys are Lavender's charcoal palette mirrored: each sits at the same
-contrast from the base as its dark twin, on the other side of it. Base
-#1e1e1e -> #ffffff, sidebar #252525 -> #f5f5f5, borders #2a2a2a ->
-#eeeeee, separators #333333 -> #e0e0e0, text #eeeeee -> #2a2a2a (14.4:1
-in both). Hover greys step lighter than the exact mirror (#ebebeb in the
-sidebar, #f2f2f2 in the note list): mirrored, they were as loud as the
-lavender selection. Secondary text #707070 clears 4.5:1 on the sidebar.
-Status colours are native Light's.
+The Monospace Font option (Preferences > Appearance) did nothing.
+Standard Notes puts .monospace-font on <html> and points .font-editor,
+the note editor, at the monospace stack, but section 3's html, body,
+body * rule sets Inter with !important and won. A rule after it hands
+.font-editor back to the monospace face while the option is on.
 
-The accent can't be mirrored. #a79ef4 is 2.4:1 on white, so the solid
-accent keeps its 246° hue and deepens to #6d61d1 (4.9:1, level with
-native Light's blue at 5.0:1), with white text on it again. The darkened
-shade is #5446c9, 6.9 HSL lightness points lower as before. The washes
-come from the deeper accent: an 18% backdrop for selected rows, as in
-Lavender, a 25% text selection under #2a2a2a (10.3:1) and a 35%
-scrollbar thumb. Accessory tint 1 follows the accent.
+The section 6 block that turns the -> arrow back off left the arrows
+in place. It set only font-variant-ligatures: none, but
+--sn-inter-features asks for 'calt' 1, and font-feature-settings
+outranks font-variant-ligatures. The block now also takes calt out of
+--sn-inter-features, and uses no-contextual so other ligatures stay.
 
-Two rules change. Accent text that sits on the wash — the selected
-sidebar label and a Daily view day with an entry — uses the darkened
-shade: 5.0-5.4:1, where the accent would manage 3.6-3.9:1. Both still
-only reference variables.
+The section 6 block for tabular figures in Super tables stopped at the
+<table>: section 3 sets feature settings on every element, so the
+cells' text never inherited 'tnum'. It now targets the table and
+everything in it.
 
-The sidebar label rule also sets -webkit-text-fill-color. Standard Notes
-paints tag titles with -webkit-text-fill-color:
-var(--navigation-item-text-color), which wins over color, so a rule that
-sets only color never reaches the screen. Lavender v2.6.0 does exactly
-that: its computed colour is lavender but the pixels are #eeeeee. Here
-the label is sampled at #5446c9 in the running app.
+CI: a check that the Monospace rule is still there.
 
-CI: the colour digest is re-baselined to the Lavender Light palette —
-still 90 declarations, still everything except the three --sn-inter-*
-knobs.
+Checked in app.standardnotes.com: flipping Preferences > Appearance >
+Monospace Font draws a note in the monospace face (Chrome's per-node
+font report: Liberation Mono, where it was Inter), and the uncommented
+arrows block leaves "a -> b" as six glyphs in the title and the editor
+(five, fused, without it). The selected tag's label still samples
+#5446c9.
 
-Previewed in app.standardnotes.com v3.203.0 next to Lavender before
-release: sidebar, note list, editor, text selection, menus, quick
-settings and preferences.
-
-Released as 2.7.0.
+Released as 2.7.1.
